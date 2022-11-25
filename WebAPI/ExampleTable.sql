@@ -16,3 +16,32 @@ insert into TT(TName, TDes)
 		('A3', 'B3'),
 		('A4', 'B4')
 go
+
+create procedure [dbo].[xp_TTupdate]
+	@TID int,
+	@TName nvarchar(4),
+	@TDes varchar(16)
+as begin
+	update TT
+		set TName = @TName, TDes = @TDes
+		where TID = @TID
+end
+go
+
+create procedure [dbo].[xp_TTinsert]
+	@TID int output,
+	@TName nvarchar(4),
+	@TDes varchar(16)
+as begin
+	insert into TT(TName, TDes)
+		values(@TName, @TDes)
+	set @TID = SCOPE_IDENTITY()
+end
+go
+
+create procedure xp_TTdelete
+	@TID int output
+as begin
+	delete from TT where TID = @TID
+end
+go

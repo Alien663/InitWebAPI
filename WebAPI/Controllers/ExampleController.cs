@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         {
             using (var db = new AppDb())
             {
-                string sql = "xp_updateTT";
+                string sql = "xp_TTupdate";
                 DynamicParameters p = new DynamicParameters();
                 p.Add("@TID", payload.TID);
                 p.Add("@TName", payload.TName);
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
         {
             using (var db = new AppDb())
             {
-                string sql = "xp_TTDelete";
+                string sql = "xp_TTdelete";
                 DynamicParameters p = new DynamicParameters();
                 p.Add("@TID", payload.TID);
                 db.Connection.Execute(sql, p);
