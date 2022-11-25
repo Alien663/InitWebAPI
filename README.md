@@ -1,5 +1,7 @@
 # Initial Web APi
 
+There's a ExampleTable.sql to describe my DB schema, you can use it to build your database by yourself.
+
 1. Version : .net core 6
 2. DB : SQL Server 2019
 
