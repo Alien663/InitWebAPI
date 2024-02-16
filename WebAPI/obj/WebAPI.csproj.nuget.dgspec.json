@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SideProject\\dotnet core 6 webapi template\\WebAPI\\WebAPI\\WebAPI.csproj": {}
+    "D:\\SideProject\\InitWebAPI\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\SideProject\\dotnet core 6 webapi template\\WebAPI\\WebAPI\\WebAPI.csproj": {
+    "D:\\SideProject\\InitWebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SideProject\\dotnet core 6 webapi template\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "D:\\SideProject\\InitWebAPI\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "D:\\SideProject\\dotnet core 6 webapi template\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectPath": "D:\\SideProject\\InitWebAPI\\WebAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\11107063\\.nuget\\packages\\",
-        "outputPath": "D:\\SideProject\\dotnet core 6 webapi template\\WebAPI\\WebAPI\\obj\\",
+        "outputPath": "D:\\SideProject\\InitWebAPI\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\11107063\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -29,8 +27,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "http://tdsap29/OF_Nuget/nuget/": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://gltdsdevops.quantatw.com/GL/_packaging/GLNuget/nuget/v3/index.json": {},
+          "https://gltdsdevops.quantatw.com/OF/_packaging/OFNuGet/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -74,7 +73,7 @@
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.5, )"
+              "version": "[4.8.6, )"
             }
           },
           "imports": [
@@ -96,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
