@@ -1,0 +1,13 @@
+D:\SideProject\InitWebAPI\Sample.Service2\bin\Debug\net8.0\Sample.Service2.deps.json
+D:\SideProject\InitWebAPI\Sample.Service2\bin\Debug\net8.0\Sample.Service2.dll
+D:\SideProject\InitWebAPI\Sample.Service2\bin\Debug\net8.0\Sample.Service2.pdb
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.csproj.AssemblyReference.cache
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.GeneratedMSBuildEditorConfig.editorconfig
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.AssemblyInfoInputs.cache
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.AssemblyInfo.cs
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.csproj.CoreCompileInputs.cache
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.sourcelink.json
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.dll
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\refint\Sample.Service2.dll
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\Sample.Service2.pdb
+D:\SideProject\InitWebAPI\Sample.Service2\obj\Debug\net8.0\ref\Sample.Service2.dll

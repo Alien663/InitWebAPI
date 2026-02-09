@@ -1,12 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using WebAPI.Lib;
+using Microsoft.Extensions.Options;
+using Sample.Service1.Entities;
+using Sample.Service1.Interfaces;
+using Sample.Service1.Services;
+using Sample.Service2.Interfaces;
+using Sample.Service2.Services;
+using Sample.Service2.Options;
+using System.Net;
+using WebAPI.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+builder.Services.Configure<AzureOption>(builder.Configuration.GetSection("Azure"));
+builder.Services.Configure<ProxyOption>(builder.Configuration.GetSection("Proxy"));
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", policy =>
@@ -18,11 +29,45 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddSpaStaticFiles (configuration =>
+builder.Services.AddSpaStaticFiles(configuration =>
 {
     configuration.RootPath = "ClientApp";
 });
 
+// Regist application
+builder.Services.AddScoped<ISampleServices1, SampleService1>();
+
+builder.Services.AddHttpClient<IMyHttpClient, MyHttpClient>((sp, client) =>
+{
+    var azureOption = sp.GetRequiredService<IOptions<AzureOption>>().Value;
+    if (!string.IsNullOrEmpty(azureOption?.Resource))
+    {
+        client.BaseAddress = new Uri(azureOption.Resource);
+    }
+})
+.ConfigurePrimaryHttpMessageHandler(sp =>
+{
+    var proxyOption = sp.GetRequiredService<IOptions<ProxyOption>>().Value;
+    if (!string.IsNullOrEmpty(proxyOption?.IP))
+    {
+        return new HttpClientHandler
+        {
+            Proxy = new WebProxy(proxyOption.IP)
+            {
+                Credentials = new NetworkCredential(proxyOption.Account, proxyOption.Password)
+            },
+            UseProxy = true 
+        };
+    }
+    return new HttpClientHandler();
+});
+
+// Entity Framework Core configuration
+builder.Services.AddDbContext<SampleContext>(options =>
+{
+    string connectionStirng = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
+    options.UseSqlServer(connectionStirng);
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -35,30 +80,21 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("CorsPolicy");
 }
-app.UseMiddleware<ExceptionMiddleware>();
+
+// If you want CORS in non-development too, move this outside the Development block.
+app.UseCors("CorsPolicy");
+
+app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseSpaStaticFiles();
 
-app.UseRouting();
+app.MapControllers();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-     name: "default",
-     pattern: "{controller}/{id?}");
-});
 app.UseSpa(spa =>
 {
     spa.Options.SourcePath = "ClientApp";
 });
-
-app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();
